@@ -1,6 +1,6 @@
 import {createReducer} from '@reduxjs/toolkit'
 
-const initialState=[{Note:"suryansh",Month:new Date().getMonth(),EventDate:new Date().getDate()}];
+const initialState=[{Note:"Default reminder",Month:new Date().getMonth(),EventDate:new Date().getDate()}];
 
 
 export default createReducer(initialState,(builder)=>{

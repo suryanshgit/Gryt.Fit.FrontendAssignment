@@ -116,7 +116,7 @@ function App() {
           name="show-prev"
           onClick={handleClick}
         >
-        <ChevronLeftIcon/>
+        Prev
         </button>
 
         <div className="item-container">
@@ -124,13 +124,15 @@ function App() {
             <DateComponent item={item} index={index} />
           ))}
         </div>
+       
         <button
           className="show-next-item"
           name="show-next"
           onClick={handleClick}
         >
-          <ChevronRightIcon/>
+         Next 
         </button>
+       
       </div>
       <div className="event-container">
           <TodoItems month={month} slideIndex={slideIndex}/>
