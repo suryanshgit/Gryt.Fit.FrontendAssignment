@@ -56,14 +56,14 @@ function EventDesc({ setFlag, item }) {
         <i class="fa fa-times" aria-hidden="true"></i>
       </button>
       <div className="eventDesc-content">
-      <div>{item.Note}</div>
-      <div>{item.EventDate}</div>
-      <div>{item.Month}</div>
+        <div>{item.Note}</div>
+        <div>{item.EventDate}</div>
+        <div>{item.Month}</div>
       </div>
 
       <div className="eventDesc-buttons">
-      <button onClick={handleDelete}>Delete Event</button>
-      <button onClick={() => setEditFlag(!editFlag)}>Edit Event</button>
+        <button onClick={handleDelete}>Delete Event</button>
+        <button onClick={() => setEditFlag(!editFlag)}>Edit Event</button>
       </div>
       <div>
         {editFlag && (

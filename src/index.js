@@ -1,31 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './scss/index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {Provider} from 'react-redux'
-import {configureStore} from '@reduxjs/toolkit'
-import userReducer from './reducers/userReducer';
-import { combineReducers } from 'redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./scss/index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer from "./reducers/userReducer";
+import { combineReducers } from "redux";
 
-// const masterReducer=combineReducers({
-//   add:userReducer,
-//   delete:deleteReducer
-// })
-
-
-
-const store=configureStore({
- reducer: userReducer
-})
+const store = configureStore({
+  reducer: userReducer,
+});
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+      <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
 
 reportWebVitals();

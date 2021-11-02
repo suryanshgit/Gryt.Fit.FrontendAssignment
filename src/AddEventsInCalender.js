@@ -2,37 +2,33 @@ import React, { useState } from "react";
 import "./scss/AddEventsInCalender.css";
 import DatePicker from "react-date-picker";
 import "react-date-picker/dist/DatePicker.css";
-import {useSelector,useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 
- 
-
-function AddEventsInCalender({flag,setFlag}) {
+function AddEventsInCalender({ flag, setFlag }) {
   const [note, setNote] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
-  const [date,setDate]=useState();
-  const [evenMonth,setEventMonth]=useState();
-   const dispatch = useDispatch();
-//   const mystate=useSelector(state=>state.reducer)
+  const [date, setDate] = useState();
+  const [evenMonth, setEventMonth] = useState();
+  const dispatch = useDispatch();
   
+
   const handleSubmit = () => {
     console.log(note);
     console.log(selectedDate.getDate());
-    let obj= {
-        Note: note,
-        // Date: selectedDate,
-        Month:selectedDate.getMonth(),
-        EventDate:selectedDate.getDate()
-        }
-    dispatch({type:"ADD_ITEM",payload:obj})
-    let a=[];
-    
-    a=JSON.parse(localStorage.getItem("Reminder"));
-    if(a==null){
-        localStorage.setItem("Reminder",JSON.stringify([obj]));
-    }
-    else{
-    a.push(obj);
-    localStorage.setItem("Reminder",JSON.stringify(a));
+    let obj = {
+      Note: note,
+      Month: selectedDate.getMonth(),
+      EventDate: selectedDate.getDate(),
+    };
+    dispatch({ type: "ADD_ITEM", payload: obj });
+    let a = [];
+
+    a = JSON.parse(localStorage.getItem("Reminder"));
+    if (a == null) {
+      localStorage.setItem("Reminder", JSON.stringify([obj]));
+    } else {
+      a.push(obj);
+      localStorage.setItem("Reminder", JSON.stringify(a));
     }
     // dispatch({type:"ADD_ITEM",payload})
     setFlag(!flag);
@@ -44,8 +40,8 @@ function AddEventsInCalender({flag,setFlag}) {
   };
 
   return (
-    <div className="event-container-div"> 
-      <label htmlFor=""> Enter the event</label> 
+    <div className="event-container-div">
+      <label htmlFor=""> Enter the event</label>
       <input
         type="text"
         name="value"

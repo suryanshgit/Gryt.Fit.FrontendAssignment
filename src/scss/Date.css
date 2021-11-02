@@ -14,4 +14,14 @@
   width: 100px;
   height: 90px;
 }
+
+.date-container-active {
+  margin: 30px;
+  padding: 35px;
+  background: #eb7676;
+  color: white;
+  font-weight: bold;
+  width: 100px;
+  height: 90px;
+}
 /*# sourceMappingURL=Date.css.map */

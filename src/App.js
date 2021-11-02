@@ -6,14 +6,25 @@ import MonthDropDown from "./MonthDropDown";
 import TodoItems from "./TodoItems";
 import AddEvent from "./AddEvent";
 import Weekdays from "./Weekdays";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-
-
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import { useSelector } from "react-redux";
 
 function App() {
   //month state
   const [month, setMonth] = useState(new Date().getMonth());
+
+  let tarikh = [];
+  const Eventdate = useSelector((state) => state);
+  tarikh = Eventdate.map((item) => {
+    return { date: item.EventDate, month: item.Month };
+  });
+  let dates = tarikh.map((item) => {
+    if (item.month == month) return item.date;
+  });
+  console.log("Event dates is");
+  console.log(dates);
+
   let a = [];
   let dt = new Date();
   // let month=dt.getMonth();
@@ -99,49 +110,42 @@ function App() {
     }
   };
   return (
-   
     <div className="App">
       <div className="header">
         <Month month={month} />
         <MonthDropDown month={month} setMonth={setMonth} />
       </div>
-      
-      
-      <Weekdays/>
-      
-     
+
+      <Weekdays />
+
       <div className="container">
         <button
           className="show-prev-item"
           name="show-prev"
           onClick={handleClick}
         >
-        Prev
+          Prev
         </button>
 
         <div className="item-container">
           {a.map((item, index) => (
-            <DateComponent item={item} index={index} />
+            <DateComponent item={item} index={index} dates={dates} />
           ))}
         </div>
-       
+
         <button
           className="show-next-item"
           name="show-next"
           onClick={handleClick}
         >
-         Next 
+          Next
         </button>
-       
       </div>
       <div className="event-container">
-          <TodoItems month={month} slideIndex={slideIndex}/>
-          <AddEvent/>
+        <TodoItems month={month} slideIndex={slideIndex} />
+        <AddEvent />
       </div>
-      
-     
     </div>
- 
   );
 }
 
