@@ -1,0 +1,18 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+$boxShadow:  rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+.weekdays-container{
+    margin-top:1rem;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    // border:2px solid red;
+    box-shadow: $boxShadow;
+    padding:1rem;
+    font-weight: bold;
+    width:80%;
+}

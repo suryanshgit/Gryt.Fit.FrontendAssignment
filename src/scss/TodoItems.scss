@@ -1,0 +1,33 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+$boxShadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.container-events{
+    
+    width:50%;
+    // border:2px solid red;
+    box-shadow:$boxShadow;
+    padding:1rem;
+   
+
+    .heading{
+        font-size:1.2rem;
+        margin-top:1rem;
+        // text-align:center;
+        width:15%;
+        margin:1rem;
+        // border:2px solid red;
+        border-bottom:2px solid black;
+    }
+    .events-description{
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between
+    }
+  
+
+}
+

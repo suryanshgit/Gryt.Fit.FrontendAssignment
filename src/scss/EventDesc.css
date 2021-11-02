@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.eventDesc-container {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  border-radius: 2rem;
+  background: skyblue;
+}
+
+.eventDesc-container .eventDesc-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-size: 20px;
+}
+
+.eventDesc-container .eventDesc-buttons {
+  width: 50%;
+  margin-top: 5%;
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.eventDesc-container .eventDesc-buttons button {
+  font-size: 15px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  background: white;
+}
+
+.eventDesc-container .close {
+  font-size: 20px;
+  margin: 20px 20px;
+}
+/*# sourceMappingURL=EventDesc.css.map */

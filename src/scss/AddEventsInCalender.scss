@@ -1,0 +1,20 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.event-container-div{
+    // border:2px solid palegreen;
+    margin:20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    // align-items:space-between;
+    justify-content: space-between;
+    height:10rem;
+    position:absolute;
+    margin: top 1rem;
+    background:rgb(206, 209, 208);
+    border-radius:1rem;
+}

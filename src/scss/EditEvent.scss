@@ -1,0 +1,24 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.edit-event-container{
+    position:absolute;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
+    // border:2px solid red;
+    align-items:center;
+    line-height:2rem;
+    width:20rem;
+    height:8rem;
+    border-radius:2rem;
+    background:rgba(255, 166, 0, 0.774);
+    padding:30px 20px;
+    margin-top:10px;
+    left:50%;
+    transform:translateX(-50%);
+  
+}

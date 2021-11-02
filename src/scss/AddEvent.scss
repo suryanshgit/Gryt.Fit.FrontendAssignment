@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding:0;
+    box-shadow:border-box;
+}
+$boxShadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.add-event-container{
+    // border:2px solid red;
+    // width:40%;
+    display:flex;
+    justify-content: flex-end;
+    align-items:flex-start;
+    box-shadow:$boxShadow;
+    
+    // margin:0rem 20rem;
+    .create-btn{
+        font-size:1.5rem;
+        border:none;
+        // border-bottom:2px solid orange;
+        outline:none;
+        background:none;
+        padding:0.5rem;
+    }
+    .add-event-container2{
+        // border:2px solid red;
+        display:flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: flex-start;
+        position:absolute;
+        top:10rem;
+        right:50rem;
+       
+    }
+}

@@ -1,24 +1,145 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import DateComponent from "./DateComponent";
+import "./scss/App.css";
+import Month from "./Month.js";
+import MonthDropDown from "./MonthDropDown";
+import TodoItems from "./TodoItems";
+import AddEvent from "./AddEvent";
+import Weekdays from "./Weekdays";
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+
+
 
 function App() {
+  //month state
+  const [month, setMonth] = useState(new Date().getMonth());
+  let a = [];
+  let dt = new Date();
+  // let month=dt.getMonth();
+  let year = dt.getFullYear();
+  let date = dt.getDate();
+  console.log(month, date, year);
+
+  let emptyblocks = new Date(year, month, 1).getDay();
+  let numberOfDays = new Date(year, month + 1, 0).getDate();
+  console.log("NUmber of days in month is " + numberOfDays);
+  // console.log("Day is")
+  // console.log(emptyblocks);
+
+  const [slideIndex, setSlideIndex] = useState({
+    start: 1,
+    end: 7 - emptyblocks,
+  });
+
+  console.log("value of slide Index is ");
+  console.log(slideIndex);
+
+  if (slideIndex.start == 1) {
+    for (let i = 0; i < emptyblocks; i++) a.push("");
+  }
+
+  for (let i = slideIndex.start; i <= slideIndex.end; i++) {
+    if (i <= numberOfDays) a.push(i);
+  }
+
+  useEffect(() => {
+    console.log("Use Effect hook is called");
+    // for (let i = slideIndex.start; i <= slideIndex.end; i++) {
+    //   a.push(i);
+    // }
+    emptyblocks = new Date(year, month, 1).getDay();
+    setSlideIndex({
+      start: 1,
+      end: 7 - emptyblocks,
+    });
+  }, [month]);
+
+  const handleClick = (e) => {
+    console.log(e);
+    console.log(e.target);
+    console.log(e.target.name);
+    if (e.target.name == "show-prev") {
+      //if it is at the start only then move to last months day
+      if (slideIndex.start <= 1) {
+      } else {
+        if (slideIndex.start < 8) {
+          let a = {
+            start: 1,
+            end: slideIndex.start - 1,
+          };
+          setSlideIndex(a);
+        } else {
+          let a = {
+            start: slideIndex.start - 7,
+            end: slideIndex.end - 7,
+          };
+          setSlideIndex(a);
+        }
+      }
+      console.log("Value after click on next button " + slideIndex);
+      console.log(slideIndex);
+    }
+
+    if (e.target.name == "show-next") {
+      if (slideIndex.start < numberOfDays && slideIndex.end > numberOfDays) {
+      } else {
+        if (
+          !(slideIndex.start <= numberOfDays && slideIndex.end >= numberOfDays)
+        ) {
+          let a = {
+            start: slideIndex.end + 1,
+            end: slideIndex.end + 7,
+          };
+          setSlideIndex(a);
+        }
+      }
+      console.log("Value after click on next button " + slideIndex);
+      console.log(slideIndex);
+    }
+  };
   return (
+   
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="header">
+        <Month month={month} />
+        <MonthDropDown month={month} setMonth={setMonth} />
+      </div>
+      
+      
+      <Weekdays/>
+      
+     
+      <div className="container">
+        <button
+          className="show-prev-item"
+          name="show-prev"
+          onClick={handleClick}
         >
-          Learn React
-        </a>
-      </header>
+        <ChevronLeftIcon/>
+        </button>
+
+        <div className="item-container">
+          {a.map((item, index) => (
+            <DateComponent item={item} index={index} />
+          ))}
+        </div>
+        <button
+          className="show-next-item"
+          name="show-next"
+          onClick={handleClick}
+        >
+          <ChevronRightIcon/>
+        </button>
+      </div>
+      <div className="event-container">
+          <TodoItems month={month} slideIndex={slideIndex}/>
+          <AddEvent/>
+      </div>
+      
+     
     </div>
+ 
   );
 }
 
