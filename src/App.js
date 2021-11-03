@@ -67,10 +67,11 @@ function App() {
   }, [month]);
 
   const handleClick = (e) => {
+    e.stopPropagation();
     console.log(e);
-    console.log(e.target);
-    console.log(e.target.name);
-    if (e.target.name == "show-prev") {
+    console.log(e.currentTarget);
+    console.log(e.currentTarget.name);
+    if (e.currentTarget.name == "show-prev") {
       //if it is at the start only then move to last months day
       if (slideIndex.start <= 1) {
       } else {
@@ -92,7 +93,7 @@ function App() {
       console.log(slideIndex);
     }
 
-    if (e.target.name == "show-next") {
+    if (e.currentTarget.name == "show-next") {
       if (slideIndex.start < numberOfDays && slideIndex.end > numberOfDays) {
       } else {
         if (
@@ -108,6 +109,7 @@ function App() {
       console.log("Value after click on next button " + slideIndex);
       console.log(slideIndex);
     }
+    e.stopPropagation();
   };
   return (
     <div className="App">
@@ -118,13 +120,15 @@ function App() {
 
       <Weekdays />
 
-      <div className="container">
+      <div className="container" onClickCapture={(e)=>{console.log("Event capturing is set")}}>
         <button
           className="show-prev-item"
           name="show-prev"
-          onClick={handleClick}
+          onClickCapture={handleClick}
         >
-          Prev
+          <span>
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+          </span>
         </button>
 
         <div className="item-container">
@@ -132,13 +136,14 @@ function App() {
             <DateComponent item={item} index={index} dates={dates} />
           ))}
         </div>
-
+        {/* {handleClick} */}
         <button
           className="show-next-item"
           name="show-next"
-          onClick={handleClick}
+          onClickCapture={handleClick}
         >
-          Next
+        <span onClickCapture={()=>console.log("Child span tag is called")}
+        class="fa fa-chevron-right" aria-hidden="true"/>
         </button>
       </div>
       <div className="event-container">
